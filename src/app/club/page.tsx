@@ -1,34 +1,47 @@
-export default function ClubPage() {
-  return (
-    <div className="bg-[#0A1931] text-white min-h-screen">
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <h1 className="text-5xl font-black text-[#FFC300]">OUR CLUB</h1>
-        <p className="text-gray-400 mt-2">For The People. For Lufumbi. For Glory.</p>
+import Link from "next/link"
 
-        <div className="grid md:grid-cols-2 gap-10 mt-10">
-          <div>
-            <h2 className="font-black text-xl text-[#FFC300]">HISTORY</h2>
-            <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-              Founded in 2000 in Lufumbi, Kataka FC was born from the community.
-              From dusty pitches to Uganda Premier League, we represent the resilience of Eastern Uganda.
-              Our name comes from the traditional Kataka drums that unite our people.
-            </p>
-            <h2 className="font-black text-xl text-[#FFC300] mt-8">DRUM HERITAGE</h2>
-            <p className="text-sm text-gray-300 mt-3">The drum is played 90 minutes non-stop at home games since 2000. It is our 12th player.</p>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              <div className="bg-[#12244A] p-4 rounded-xl text-center border border-white/10"><p className="font-black text-2xl text-[#FFC300]">25</p><p className="text-[11px]">YEARS</p></div>
-              <div className="bg-[#12244A] p-4 rounded-xl text-center border border-white/10"><p className="font-black text-2xl text-[#FFC300]">1</p><p className="text-[11px]">UPL TITLE CHASE</p></div>
-              <div className="bg-[#12244A] p-4 rounded-xl text-center border border-white/10"><p className="font-black text-2xl text-[#FFC300]">10K+</p><p className="text-[11px]">FANS</p></div>
-            </div>
+export default function MembershipPage() {
+  return (
+    <div className="min-h-screen bg-[#F8F8F8] text-[#0A1931]">
+      <div className="max-w-[1200px] mx-auto px-6 py-12">
+        <h1 className="text-5xl font-black">MEMBERSHIP</h1>
+        <p className="mt-3 text-gray-700">Kataka FC - For The People - Lufumbi Ground - 4th Place</p>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <div className="bg-[#0A1931] text-white rounded-2xl p-6 border border-white/10">
+            <h3 className="font-black text-[#FFC300]">EAGLE FAN</h3>
+            <p className="text-2xl font-black mt-2">UGX 30K / YEAR</p>
+            <ul className="mt-4 text-sm space-y-2 text-gray-300">
+              <li>• Official card</li><li>• 10% off shop</li><li>• Priority tickets</li>
+            </ul>
+            <Link href="/tickets" className="block mt-6 bg-white text-black text-center py-3 rounded-full font-black">JOIN NOW →</Link>
           </div>
-          <div className="space-y-6">
-            <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=800" className="rounded-2xl w-full h-[300px] object-cover" alt="stadium" />
-            <div className="bg-[#12244A] p-6 rounded-2xl border border-white/10">
-              <h3 className="font-black text-[#FFC300]">LUFUMBI GROUND</h3>
-              <p className="text-sm text-gray-300 mt-2">Capacity: 5,000 • Home since 2000 • Eastern Uganda&apos;s fortress</p>
-              <p className="text-xs text-gray-400 mt-2">We are upgrading to 10,000 seater with sponsor support.</p>
-            </div>
+
+          <div className="bg-[#FFC300] text-black rounded-2xl p-6 border-2 border-black relative">
+            <span className="absolute -top-3 left-6 bg-black text-[#FFC300] text-[10px] px-3 py-1 rounded-full font-black">MOST POPULAR</span>
+            <h3 className="font-black">LUFUMBI GOLD</h3>
+            <p className="text-2xl font-black mt-2">UGX 75K / YEAR</p>
+            <ul className="mt-4 text-sm space-y-2">
+              <li>• Free Home Kit</li><li>• Meet players</li><li>• Name on wall</li>
+            </ul>
+            <Link href="/tickets" className="block mt-6 bg-black text-[#FFC300] text-center py-3 rounded-full font-black">JOIN NOW →</Link>
           </div>
+
+          <div className="bg-[#0A1931] text-white rounded-2xl p-6 border border-white/10">
+            <h3 className="font-black text-[#FFC300]">FAMILY PACK</h3>
+            <p className="text-2xl font-black mt-2">UGX 120K / YEAR</p>
+            <ul className="mt-4 text-sm space-y-2 text-gray-300">
+              <li>• 4 cards</li><li>• 20% off shop</li><li>• Free 2 matches</li>
+            </ul>
+            <Link href="/tickets" className="block mt-6 bg-white text-black text-center py-3 rounded-full font-black">JOIN NOW →</Link>
+          </div>
+        </div>
+
+        {/* Lost button recovered here */}
+        <div className="mt-10 flex gap-4">
+          <Link href="/" className="bg-[#0A1931] text-white px-8 py-3 rounded-full font-black">BACK HOME</Link>
+          <Link href="/shop" className="bg-[#FFC300] text-black px-8 py-3 rounded-full font-black">VISIT SHOP →</Link>
         </div>
       </div>
     </div>
