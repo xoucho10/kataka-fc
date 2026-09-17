@@ -1,1 +1,3 @@
-export default function Page(){ return <div className="p-20 text-center"><h1 className="text-3xl font-bold">src/app/gallery/[album]/page.tsx</h1><p>Premium Kataka FC - Coming Soon</p></div> }
+"use client"
+import { useParams } from "next/navigation"
+export default function AlbumPage(){ const {album}=useParams(); return <div className="min-h-screen bg-[#0A1931] text-white p-8 max-w-[1200px] mx-auto"><h1 className="text-3xl font-black text-[#FFC300]">{String(album).replaceAll("-"," ").toUpperCase()}</h1><p className="text-gray-400 text-sm mt-2">Matchday photos • 24 images • Lufumbi Ground</p><div className="grid grid-cols-3 gap-4 mt-8">{Array.from({length:12}).map((_,i)=><div key={i} className="h-48 bg-[#12244A] border border-white/10 rounded-xl flex items-center justify-center text-gray-500 text-xs">Photo {i+1}</div>)}</div></div>}
