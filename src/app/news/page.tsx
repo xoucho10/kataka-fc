@@ -1,65 +1,59 @@
 "use client"
-import { useEffect, useState } from "react"
 import Link from "next/link"
-import { supabase } from "@/lib/supabase"
+import { useState } from "react"
 
-export default function NewsPage(){
- const [news, setNews] = useState<any[]>([])
- const [cat, setCat] = useState("All")
+const FALLBACK_NEWS = [
+  { slug: "kataka-beats-bul-2-1", title: "KATKA STUNS BUL FC 2-1 AT LUFUMBI", category: "Match Report", excerpt: "Eagles fly high as M. Kibirige scores late winner in Week 12.", image: "https://images.unsplash.com/photo-1579952363873-27f3bfad9c0d?w=600&q=60", date: "17 Sep 2024" },
+  { slug: "coach-interview-drums", title: "COACH: 'DRUM IS OUR HEARTBEAT'", category: "Interview", excerpt: "Head coach on Lufumbi heritage and UPL top 4 push.", image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=60", date: "16 Sep 2024" },
+  { slug: "new-signing-winger", title: "KATKA SIGN SPEEDY WINGER FROM KCCA", category: "Transfer", excerpt: "21-year-old joins on 2-year deal, W7 D3 L2 form continues.", image: "https://images.unsplash.com/photo-1522778119026-d647f0596c35?w=600&q=60", date: "15 Sep 2024" },
+  { slug: "lufumbi-ground-upgrade", title: "LUFUMBI GROUND TO GET NEW STAND", category: "Club", excerpt: "5,000 capacity upgrade approved by management.", image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9?w=600&q=60", date: "14 Sep 2024" },
+  { slug: "academy-wins-derby", title: "ACADEMY WINS MBALE DERBY 3-0", category: "Academy", excerpt: "U17 Eagles shine ahead of main game.", image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=60", date: "13 Sep 2024" },
+]
 
- useEffect(()=>{
-  const fetchNews = async()=>{
-   const {data}= await supabase.from("news").select("*").order("created_at",{ascending:false})
-   if(data) setNews(data)
-  }
-  fetchNews()
- },[])
+export default function NewsPage() {
+  const [filter, setFilter] = useState("All")
+  const cats = ["All","Match Report","Interview","Transfer","Club","Academy"]
 
- const filtered = cat==="All"? news : news.filter(n=>n.category===cat)
+  const filtered = filter==="All"? FALLBACK_NEWS : FALLBACK_NEWS.filter(n=>n.category===filter)
 
- return(
- <div className="min-h-screen bg-[#0A1931] text-white">
-  <div className="max-w-[1400px] mx-auto px-6 py-8">
-   <div className="flex justify-between items-end">
-    <div><h1 className="text-4xl font-black text-[#FFC300]">KATKA NEWS HUB</h1><p className="text-sm text-gray-400 mt-1">Match Reports • Interviews • Transfers • Drum Heritage • {news.length} articles</p></div>
-    <p className="text-[11px] text-gray-500">FOR THE PEOPLE. FOR LUFUMBI.</p>
-   </div>
+  return (
+    <div className="min-h-screen bg-[#0A1931] text-white">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <h1 className="text-4xl md:text-5xl font-black text-[#FFC300]">KATKA NEWS HUB</h1>
+        <div className="flex justify-between mt-2">
+          <p className="text-slate-400 text-sm">Match Reports • Interviews • Transfers • Drum Heritage • {filtered.length} articles</p>
+          <p className="text-[10px] text-slate-500 hidden md:block">FOR THE PEOPLE.</p>
+        </div>
 
-   <div className="flex gap-2 mt-6 overflow-x-auto">
-    {["All","Match Report","Interview","Transfer","Club","Academy"].map(c=>(
-     <button key={c} onClick={()=>setCat(c)} className={`px-4 py-2 rounded-full text-[11px] font-black whitespace-nowrap ${cat===c?'bg-[#FFC300] text-black':'border border-white/20'}`}>{c}</button>
-    ))}
-   </div>
+        <div className="flex flex-wrap gap-3 mt-6">
+          {cats.map(c => (
+            <button key={c} onClick={()=>setFilter(c)}
+              className={`px-5 py-2 rounded-full text-sm font-black border ${filter===c? 'bg-[#FFC300] text-black border-[#FFC300]' : 'bg-[#12244A] text-white border-white/10 hover:border-[#FFC300]/50'}`}>
+              {c}
+            </button>
+          ))}
+        </div>
 
-   {filtered.length===0? <p className="mt-10 text-gray-500 text-sm">No news yet — add in Supabase news table with slug, title, category, excerpt, content, image, tags</p>:
-   <div className="mt-8 grid md:grid-cols-3 gap-6">
-    {/* FEATURED */}
-    {filtered.filter(n=>n.featured).slice(0,1).map(n=>(
-     <Link key={n.id} href={`/news/${n.slug}`} className="md:col-span-2 bg-[#12244A] border border-yellow-500/30 rounded-2xl overflow-hidden">
-      <div className="h-64 bg-[#0A1931] flex items-center justify-center"><img src={n.image||"/logo.png"} className="w-32 h-32 object-contain"/></div>
-      <div className="p-6">
-       <div className="flex gap-2 text-[10px]"><span className="bg-red-500 px-2 py-0.5 rounded-full font-bold">FEATURED</span><span className="text-yellow-500">{n.category}</span><span className="text-gray-400">{n.views} views</span></div>
-       <h2 className="text-2xl font-black mt-3 text-yellow-400">{n.title}</h2>
-       <p className="text-sm text-gray-300 mt-2">{n.excerpt}</p>
-       <div className="flex gap-2 mt-3">{n.tags?.map((t:string)=><span key={t} className="text-[9px] bg-[#0A1931] px-2 py-1 rounded-full">#{t}</span>)}</div>
-       <p className="text-[10px] text-gray-500 mt-3">By {n.author} • {new Date(n.created_at).toLocaleDateString()} • 3 min read</p>
+        {filtered.length===0? (
+          <p className="mt-10 text-slate-500">No news yet — add in Supabase news table</p>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            {filtered.map(n => (
+              <Link key={n.slug} href={`/news/${n.slug}`} className="bg-[#12244A] rounded-2xl overflow-hidden border border-white/10 hover:border-[#FFC300]/50 transition group">
+                <img src={n.image} alt={n.title} className="h-48 w-full object-cover group-hover:scale-105 transition duration-500" />
+                <div className="p-5">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] bg-[#FFC300] text-black px-2 py-1 rounded-full font-black">{n.category}</span>
+                    <span className="text-[11px] text-slate-400">{n.date}</span>
+                  </div>
+                  <h3 className="font-black mt-3 leading-tight group-hover:text-[#FFC300]">{n.title}</h3>
+                  <p className="text-sm text-slate-400 mt-2">{n.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-     </Link>
-    ))}
-
-    <div className="space-y-4">
-     {filtered.slice(0,4).map(n=>(
-      <Link key={n.id} href={`/news/${n.slug}`} className="block bg-[#12244A]/60 border border-white/10 rounded-xl p-4 hover:border-yellow-500/30">
-       <p className="text-[10px] text-yellow-500">{n.category} • {n.views} views</p>
-       <h3 className="font-bold text-sm mt-1 line-clamp-2">{n.title}</h3>
-       <p className="text-[11px] text-gray-400 mt-1 line-clamp-2">{n.excerpt}</p>
-       <p className="text-[9px] text-gray-500 mt-2">{n.author} • {new Date(n.created_at).toLocaleDateString()}</p>
-      </Link>
-     ))}
     </div>
-   </div>
-   }
-  </div>
- </div>
- )
+  )
 }
