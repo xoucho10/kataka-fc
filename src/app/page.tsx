@@ -21,32 +21,31 @@ export default function HomePage() {
   ]
 
   const news = [
-    { id: 1, title: "Kataka FC Secures Crucial Win Over BUL FC", cat: "MATCH REPORT", date: "12 Oct 2024", img: "https://images.unsplash.com/photo-1579952363873-27f3bfad9c0d?q=80&w=600" },
-    { id: 2, title: "M. Kibirige Named Player of the Month", cat: "CLUB NEWS", date: "10 Oct 2024", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600" },
-    { id: 3, title: "New 2024/25 Home Kit Officially Unveiled", cat: "SHOP", date: "08 Oct 2024", img: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?q=80&w=600" },
+    { id: 1, title: "Kataka FC Secures Crucial Win Over BUL FC", cat: "MATCH REPORT", date: "12 Oct 2024", img: "https://images.unsplash.com/photo-1579952363873-27f3bfad9c0d?w=400&q=60&auto=format&fit=crop" },
+    { id: 2, title: "M. Kibirige Named Player of the Month", cat: "CLUB NEWS", date: "10 Oct 2024", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&q=60&auto=format&fit=crop" },
+    { id: 3, title: "New 2024/25 Home Kit Officially Unveiled", cat: "SHOP", date: "08 Oct 2024", img: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=60&auto=format&fit=crop" },
   ]
 
   const players = [
-    { name: "M. KIBIRIGE", num: 10, pos: "MIDFIELDER", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300" },
-    { name: "J. OKETCH", num: 9, pos: "STRIKER", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300" },
-    { name: "D. MUSISI", num: 1, pos: "GOALKEEPER", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300" },
-    { name: "S. LWANGA", num: 8, pos: "MIDFIELDER", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300" },
-    { name: "P. MUGABI", num: 4, pos: "DEFENDER", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300" },
-    { name: "R. KASOZI", num: 7, pos: "WINGER", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300" },
-    { name: "A. KIZITO", num: 5, pos: "DEFENDER", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300" },
-    { name: "F. SSEMAKULA", num: 11, pos: "STRIKER", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300" },
+    { id:1, name: "M. KIBIRIGE", num: 10, pos: "MIDFIELDER", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=60&auto=format&fit=crop" },
+    { id:2, name: "J. OKETCH", num: 9, pos: "STRIKER", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=60&auto=format&fit=crop" },
+    { id:3, name: "D. MUSISI", num: 1, pos: "GOALKEEPER", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=60&auto=format&fit=crop" },
+    { id:4, name: "S. LWANGA", num: 8, pos: "MIDFIELDER", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=60&auto=format&fit=crop" },
+    { id:5, name: "P. MUGABI", num: 4, pos: "DEFENDER", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=60&auto=format&fit=crop" },
+    { id:6, name: "R. KASOZI", num: 7, pos: "WINGER", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=60&auto=format&fit=crop" },
+    { id:7, name: "A. KIZITO", num: 5, pos: "DEFENDER", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=60&auto=format&fit=crop" },
+    { id:8, name: "F. SSEMAKULA", num: 11, pos: "STRIKER", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=200&q=60&auto=format&fit=crop" },
   ]
 
   const shop = [
-    { name: "HOME KIT 24/25", price: "UGX 85,000", img: "https://images.unsplash.com/photo-1529900748604-07564a03e7a0?q=80&w=400" },
-    { name: "AWAY KIT 24/25", price: "UGX 85,000", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=400" },
-    { name: "TRAINING JERSEY", price: "UGX 55,000", img: "https://images.unsplash.com/photo-1580087256930-1d4a2c0d3f7a?q=80&w=400" },
+    { id:"home-kit-24-25", name: "HOME KIT 24/25", price: "UGX 85,000", img: "https://images.unsplash.com/photo-1529900748604-07564a03e7a0?w=400&q=60&auto=format&fit=crop" },
+    { id:"away-kit-24-25", name: "AWAY KIT 24/25", price: "UGX 85,000", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=60&auto=format&fit=crop" },
+    { id:"training-jersey", name: "TRAINING JERSEY", price: "UGX 55,000", img: "https://images.unsplash.com/photo-1580087256930-1d4a2c0d3f7a?w=400&q=60&auto=format&fit=crop" },
   ]
 
   return (
     <div className="min-h-screen bg-[#0A1931] text-white overflow-hidden">
 
-      {/* ===== YOUR ORIGINAL HERO - KEPT 100% ===== */}
       <main className="max-w-[1400px] mx-auto px-6 py-8 grid lg:grid-cols-[1.1fr_1.2fr_0.8fr] gap-8">
         <div>
           <h1 className="text-[38px] font-black leading-[0.9] text-[#FFC300]">FOR THE PEOPLE. FOR LUFUMBI. FOR GLORY.</h1>
@@ -70,29 +69,26 @@ export default function HomePage() {
           </div>
         </div>
         <div className="relative">
-          <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=800" alt="Player" className="w-full h-[580px] object-cover rounded-2xl" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931] via-transparent to-transparent rounded-2xl"></div>
+          <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=600&auto=format&fit=crop" alt="Player" className="w-full h-[580px] object-cover rounded-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931] via-transparent to-transparent rounded-2xl pointer-events-none"></div>
           <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur p-3 rounded-xl border border-white/10 flex justify-between items-center">
             <div><p className="text-[10px] text-yellow-400 font-black">MAN OF THE MATCH</p><p className="font-black text-sm">J. OKETCH • 2 GOALS</p></div>
             <Link href="/highlights" className="bg-[#FFC300] text-black text-[10px] font-black px-3 py-1.5 rounded-full">WATCH HIGHLIGHTS</Link>
           </div>
         </div>
         <div className="space-y-3">
-          {players.slice(0,3).map((p,i) => (
-            <div key={i} className="bg-gradient-to-b from-[#1A2F60] to-[#0A1931] border border-yellow-500/30 rounded-xl p-4 text-center">
+          {players.slice(0,3).map((p) => (
+            <Link key={p.id} href={`/squad/${p.id}`} className="block bg-gradient-to-b from-[#1A2F60] to-[#0A1931] border border-yellow-500/30 rounded-xl p-4 text-center hover:border-[#FFC300] hover:scale-[1.02] transition cursor-pointer">
               <p className="text-[9px] bg-yellow-500 text-black px-2 py-0.5 rounded-full inline-block font-black">FEATURED PLAYER</p>
-              <img src={p.img} className="w-16 h-16 rounded-full mx-auto mt-2 object-cover border-2 border-yellow-500/30" alt={p.name} />
+              <img src={p.img} className="w-16 h-16 rounded-full mx-auto mt-2 object-cover border-2 border-yellow-500/30" alt={p.name} loading="lazy" />
               <h4 className="font-black mt-2 text-yellow-400 text-sm">{p.name}</h4>
               <p className="text-[10px] leading-tight">{p.num}<br/>{p.pos}</p>
               <p className="text-[9px] text-gray-400 mt-1">APPS 12 • GOALS 3 • ASSISTS 5</p>
-            </div>
+            </Link>
           ))}
         </div>
       </main>
 
-      {/* ===== NEW 4M SECTIONS ===== */}
-
-      {/* FIXTURES + TABLE */}
       <section className="max-w-[1400px] mx-auto px-6 py-8 grid lg:grid-cols-[1.5fr_1fr] gap-6">
         <div className="bg-[#12244A] border border-white/10 rounded-2xl p-5">
           <div className="flex justify-between items-center mb-4">
@@ -132,49 +128,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEWS */}
       <section className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="flex justify-between items-center mb-5"><h2 className="font-black text-2xl text-[#FFC300]">LATEST NEWS</h2><Link href="/news" className="text-xs bg-[#FFC300] text-black font-black px-4 py-2 rounded-full">VIEW ALL NEWS</Link></div>
         <div className="grid md:grid-cols-3 gap-5">
           {news.map(n => (
-            <Link key={n.id} href={`/news/${n.id}`} className="group bg-[#12244A] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-500/50 transition">
-              <img src={n.img} className="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt={n.title} />
-              <div className="p-4"><p className="text-[10px] text-yellow-400 font-black tracking-widest">{n.cat} • {n.date}</p><h3 className="font-bold mt-2 leading-tight group-hover:text-yellow-400">{n.title}</h3><p className="text-[12px] text-gray-400 mt-2 line-clamp-2">Kataka FC continues to dominate the league with strong performances...</p></div>
+            <Link key={n.id} href={`/news/${n.id}`} className="group bg-[#12244A] border border-white/10 rounded-2xl overflow-hidden hover:border-yellow-500/50 transition block">
+              <img src={n.img} className="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt={n.title} loading="lazy" />
+              <div className="p-4"><p className="text-[10px] text-yellow-400 font-black tracking-widest">{n.cat} • {n.date}</p><h3 className="font-bold mt-2 leading-tight group-hover:text-yellow-400">{n.title}</h3></div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* SQUAD 8 PLAYERS */}
       <section className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="flex justify-between items-center mb-5"><h2 className="font-black text-2xl text-[#FFC300]">FIRST TEAM SQUAD</h2><Link href="/squad" className="text-xs border border-yellow-500/50 px-4 py-2 rounded-full hover:bg-yellow-500 hover:text-black">VIEW FULL SQUAD</Link></div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {players.map((p,i) => (
-            <div key={i} className="bg-gradient-to-b from-[#1A2F60] to-[#0A1931] border border-white/10 rounded-2xl p-4 text-center group hover:border-yellow-500/40">
-              <div className="relative"><img src={p.img} className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-white/10 group-hover:border-yellow-400" alt={p.name} /><span className="absolute -bottom-1 -right-2 bg-[#FFC300] text-black text-[10px] font-black w-7 h-7 rounded-full grid place-items-center">{p.num}</span></div>
+          {players.map((p) => (
+            <Link key={p.id} href={`/squad/${p.id}`} prefetch className="bg-gradient-to-b from-[#1A2F60] to-[#0A1931] border border-white/10 rounded-2xl p-4 text-center group hover:border-yellow-500/60 hover:scale-[1.02] transition block">
+              <div className="relative"><img src={p.img} className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-white/10 group-hover:border-yellow-400" alt={p.name} loading="lazy" /><span className="absolute -bottom-1 right-6 bg-[#FFC300] text-black text-[10px] font-black w-7 h-7 rounded-full grid place-items-center">{p.num}</span></div>
               <h4 className="font-black mt-3 text-sm text-white">{p.name}</h4><p className="text-[11px] text-yellow-400 tracking-widest">{p.pos}</p>
               <div className="flex justify-center gap-2 mt-3"><span className="text-[9px] bg-white/10 px-2 py-1 rounded-full">12 APPS</span><span className="text-[9px] bg-white/10 px-2 py-1 rounded-full">3 GOALS</span></div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* SHOP */}
       <section className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="bg-[#FFC300] rounded-[24px] p-6 md:p-8 text-black">
           <div className="flex justify-between items-center mb-6"><h2 className="font-black text-2xl">OFFICIAL STORE</h2><Link href="/shop" className="bg-black text-[#FFC300] text-xs font-black px-5 py-2.5 rounded-full">VISIT STORE →</Link></div>
           <div className="grid md:grid-cols-3 gap-6">
-            {shop.map((s,i) => (
-              <div key={i} className="bg-black rounded-2xl p-4 text-white border border-white/10">
-                <img src={s.img} className="h-56 w-full object-cover rounded-xl bg-white/5" alt={s.name} />
-                <div className="flex justify-between items-center mt-4"><div><h4 className="font-black text-sm">{s.name}</h4><p className="text-yellow-400 font-bold text-sm">{s.price}</p></div><button className="bg-[#FFC300] text-black w-10 h-10 rounded-full font-black">+</button></div>
-              </div>
+            {shop.map((s) => (
+              <Link key={s.id} href={`/shop/${s.id}`} prefetch className="bg-black rounded-2xl p-4 text-white border border-white/10 hover:border-white/30 hover:scale-[1.02] transition block">
+                <img src={s.img} className="h-56 w-full object-cover rounded-xl bg-white/5" alt={s.name} loading="lazy" />
+                <div className="flex justify-between items-center mt-4"><div><h4 className="font-black text-sm">{s.name}</h4><p className="text-yellow-400 font-bold text-sm">{s.price}</p></div><div className="bg-[#FFC300] text-black w-10 h-10 rounded-full font-black grid place-items-center">+</div></div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SPONSORS */}
       <section className="border-y border-white/10 bg-[#12244A]/50 py-6">
         <div className="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-between items-center gap-6">
           <p className="text-[11px] tracking-[0.3em] text-gray-400 font-black">OFFICIAL PARTNERS</p>
