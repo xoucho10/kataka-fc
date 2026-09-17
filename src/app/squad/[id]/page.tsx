@@ -1,75 +1,55 @@
-"use client"
-import { useEffect, useState } from "react"
-import { useParams } from "next/navigation"
 import Link from "next/link"
 import { supabase } from "@/lib/supabase"
 
-export default function PlayerPage(){
- const { id } = useParams()
- const [player, setPlayer] = useState<any>(null)
- const [loading, setLoading] = useState(true)
+// Fallback same as list page
+const FALLBACK = [
+  { id:1, name:"M. KIBIRIGE", number:10, position:"MID", photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&q=60", apps:12, goals:3, bio:"Captain and playmaker from Lufumbi. Joined 2020.", age:26, foot:"Right", height:"1.78m" },
+  { id:2, name:"J. OKETCH", number:9, position:"FWD", photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=60", apps:12, goals:6, bio:"Top scorer. Pace and power.", age:24, foot:"Left", height:"1.82m" },
+  { id:3, name:"D. MUSISI", number:1, position:"GK", photo:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=60", apps:12, goals:0, bio:"Safe hands. Fan favourite.", age:28, foot:"Right", height:"1.90m" },
+  { id:4, name:"P. MUGABI", number:4, position:"DEF", photo:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=60", apps:11, goals:1, bio:"Rock at the back.", age:27, foot:"Right", height:"1.85m" },
+]
 
- useEffect(()=>{
-  const fetchPlayer = async ()=>{
-   const { data } = await supabase.from("players").select("*").eq("id", id).single()
-   if(data) setPlayer(data)
-   setLoading(false)
+export default async function PlayerPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params // Next 16 needs await
+
+  // 1. Try Supabase
+  let player: any = null
+  const { data } = await supabase.from("players").select("*").eq("id", id).single()
+  if(data) player = data
+  else {
+    // 2. Try fallback
+    player = FALLBACK.find(p => String(p.id) === String(id))
   }
-  if(id) fetchPlayer()
- },[id])
 
- if(loading) return <div className="min-h-screen bg-[#0A1931] flex items-center justify-center text-yellow-400">Loading Eagles...</div>
- if(!player) return <div className="min-h-screen bg-[#0A1931] flex items-center justify-center text-white">Player not found <Link href="/squad" className="ml-3 text-yellow-400 underline">Back to Squad</Link></div>
+  if(!player) {
+    return <div className="bg-[#0A1931] min-h-screen flex items-center justify-center text-white">Player not found <Link href="/squad" className="ml-3 text-[#FFC300] underline">Back to Squad</Link></div>
+  }
 
- return(
- <div className="min-h-screen bg-[#0A1931] text-white">
-  <div className="max-w-[1200px] mx-auto px-6 py-8">
-   <Link href="/squad" className="text-[11px] text-yellow-400 tracking-widest">← BACK TO SQUAD</Link>
+  return (
+    <div className="bg-[#0A1931] min-h-screen text-white">
+      <div className="max-w-[1000px] mx-auto px-6 py-10">
+        <Link href="/squad" className="text-sm text-gray-400">← Back to Squad</Link>
+        <div className="grid md:grid-cols-2 gap-10 mt-6">
+          <img src={player.photo} alt={player.name} className="w-full h-[500px] object-cover rounded-2xl bg-[#12244A]" />
+          <div>
+            <h1 className="text-5xl font-black text-[#FFC300]">{player.name}</h1>
+            <p className="text-xl mt-2">#{player.number} • {player.position}</p>
+            <p className="text-sm text-gray-300 mt-6">{player.bio || "Kataka FC player for the people, for Lufumbi."}</p>
 
-   <div className="grid md:grid-cols-[380px_1fr] gap-8 mt-6">
-    {/* LEFT - PLAYER CARD LIKE TEMPLATE */}
-    <div className="bg-[#12244A] border border-yellow-500/30 rounded-2xl p-8 text-center">
-     <div className="w-32 h-32 bg-[#0A1931] rounded-full mx-auto flex items-center justify-center text-6xl font-black text-yellow-400 border-2 border-yellow-500/30">{player.number}</div>
-     <h1 className="text-3xl font-black mt-6 text-yellow-400">{player.name}</h1>
-     <p className="text-xs tracking-[0.3em] text-gray-400 mt-1">{player.position} • #{player.number} • {player.nationality || 'Uganda'}</p>
+            <div className="grid grid-cols-3 gap-3 mt-8">
+              <div className="bg-[#12244A] p-4 rounded-xl text-center"><p className="text-xs text-gray-400">APPS</p><p className="font-black text-[#FFC300] text-xl">{player.apps || 12}</p></div>
+              <div className="bg-[#12244A] p-4 rounded-xl text-center"><p className="text-xs text-gray-400">GOALS</p><p className="font-black text-[#FFC300] text-xl">{player.goals || 0}</p></div>
+              <div className="bg-[#12244A] p-4 rounded-xl text-center"><p className="text-xs text-gray-400">AGE</p><p className="font-black text-xl">{player.age || 24}</p></div>
+            </div>
 
-     <div className="grid grid-cols-3 gap-3 mt-8">
-      <div className="bg-[#0A1931] p-3 rounded-xl"><p className="text-[9px] text-yellow-500">APPS</p><p className="text-xl font-black">{player.apps}</p></div>
-      <div className="bg-[#0A1931] p-3 rounded-xl"><p className="text-[9px] text-yellow-500">GOALS</p><p className="text-xl font-black">{player.goals}</p></div>
-      <div className="bg-[#0A1931] p-3 rounded-xl"><p className="text-[9px] text-yellow-500">ASSISTS</p><p className="text-xl font-black">{player.assists || 0}</p></div>
-     </div>
+            <div className="mt-8 bg-[#12244A] p-5 rounded-xl border border-white/10 text-sm">
+              <p>Height: {player.height} • Foot: {player.foot}</p>
+            </div>
 
-     <button className="w-full mt-6 bg-[#FFC300] text-black py-3 rounded-full text-xs font-black">BUY {player.name.split(' ')[0]} JERSEY</button>
-     <p className="text-[9px] text-gray-500 mt-3">FOR THE PEOPLE. FOR LUFUMBI.</p>
-    </div>
-
-    {/* RIGHT - BIO & STATS */}
-    <div className="space-y-6">
-     <div className="bg-[#12244A]/60 border border-white/10 rounded-2xl p-6">
-      <h3 className="text-yellow-400 font-black text-sm tracking-widest">BIOGRAPHY — DRUM HERITAGE</h3>
-      <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-       {player.bio || `${player.name} is a proud son of Lufumbi, representing Kataka FC with heart since 2000 heritage. Known for drum celebration after every goal.`}
-      </p>
-      <p className="text-sm text-gray-300 mt-3">Age: {player.age || 24} • Position: {player.position} • Part of the Eagles chasing UPL glory — currently 4th with W7 D3 L2, 12 points.</p>
-     </div>
-
-     <div className="bg-[#12244A]/60 border border-white/10 rounded-2xl p-6">
-      <h3 className="text-yellow-400 font-black text-sm">2024/25 SEASON STATS</h3>
-      <div className="mt-4 space-y-3 text-xs">
-       <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">Appearances</span><span className="font-bold">{player.apps} Matches</span></div>
-       <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">Goals</span><span className="font-bold text-yellow-400">{player.goals} Goals</span></div>
-       <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">Clean Sheets / Assists</span><span className="font-bold">{player.assists} Assists</span></div>
-       <div className="flex justify-between"><span className="text-gray-400">Current Form</span><span className="text-green-400 font-bold">Excellent ★ 7.8 Rating</span></div>
+            <Link href={`/shop`} className="block text-center mt-8 bg-[#FFC300] text-black font-black py-4 rounded-full">BUY {player.name} JERSEY</Link>
+          </div>
+        </div>
       </div>
-     </div>
-
-     <div className="bg-gradient-to-r from-[#FFC300] to-yellow-600 text-black rounded-2xl p-5 flex justify-between items-center">
-      <div><p className="font-black text-sm">NEXT MATCH — KATKA vs {player.position === 'FWD'? 'Vipers' : 'KCCA'}</p><p className="text-[11px]">Watch {player.name} live at Lufumbi Ground</p></div>
-      <Link href="/tickets" className="bg-black text-yellow-400 px-5 py-2 rounded-full text-xs font-black">GET TICKET</Link>
-     </div>
     </div>
-   </div>
-  </div>
- </div>
- )
+  )
 }
