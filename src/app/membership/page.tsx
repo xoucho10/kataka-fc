@@ -1,0 +1,1 @@
+export default function Page(){return(<div className='mx-auto max-w-7xl px-4 py-12'><h1 className='text-4xl font-black'>MEMBERSHIP</h1><p className='mt-4'>Kataka FC - For The People - Lufumbi Ground - 4th Place</p></div>)}

@@ -1,0 +1,1 @@
+export default function Page(){ return <div className="p-20 text-center"><h1 className="text-3xl font-bold">src/app/fixtures/[id]/page.tsx</h1><p>Premium Kataka FC - Coming Soon</p></div> }
