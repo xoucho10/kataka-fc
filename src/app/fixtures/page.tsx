@@ -2,13 +2,26 @@
 import { useState } from "react"
 import Link from "next/link"
 
-const FALLBACK_FIXTURES = [
+type Fixture = {
+  id: number
+  opponent: string
+  date: string
+  time: string
+  venue: string
+  status: string
+  score: string
+  minute: string
+  comp: string
+  highlight?: boolean
+}
+
+const FALLBACK_FIXTURES: Fixture[] = [
   { id: 1, opponent: "BUL FC", date: "12 SEP 2024", time: "4:00 PM", venue: "Lufumbi Ground", status: "finished", score: "KATKA 2-1 BUL", minute: "FT", comp: "UPL • Week 12" },
-  { id: 2, opponent: "SC VILLA", date: "20 SEP 2024", time: "4:00 PM", venue: "Lufumbi Ground", status: "upcoming", score: "vs SC VILLA", minute: "TICKETS LIVE", comp: "UPL • Week 13" },
+  { id: 2, opponent: "SC VILLA", date: "20 SEP 2024", time: "4:00 PM", venue: "Lufumbi Ground", status: "upcoming", score: "vs SC VILLA", minute: "TICKETS LIVE", comp: "UPL • Week 13", highlight: true },
   { id: 3, opponent: "KCCA FC", date: "27 SEP 2024", time: "4:00 PM", venue: "MTN Omondi", status: "upcoming", score: "vs KCCA FC", minute: "AWAY", comp: "UPL • Week 14" },
   { id: 4, opponent: "VIPERS SC", date: "04 OCT 2024", time: "4:00 PM", venue: "Lufumbi Ground", status: "upcoming", score: "vs VIPERS SC", minute: "TOP 4 CLASH", comp: "UPL • Week 15" },
   { id: 5, opponent: "EXPRESS FC", date: "05 SEP 2024", time: "4:00 PM", venue: "Mutessa II", status: "finished", score: "EXPRESS 0-0 KATKA", minute: "FT", comp: "UPL • Week 11" },
-  { id: 6, opponent: "Maroons FC", date: "TODAY", time: "LIVE", venue: "Lufumbi Ground", status: "live", score: "KATKA 1-0 MAROONS", minute: "67'", comp: "UPL • LIVE" },
+  { id: 6, opponent: "Maroons FC", date: "TODAY", time: "LIVE", venue: "Lufumbi Ground", status: "live", score: "KATKA 1-0 MAROONS", minute: "67'", comp: "UPL • LIVE", highlight: true },
 ]
 
 const TABLE = [
@@ -41,7 +54,6 @@ export default function FixturesPage() {
           <p className="mt-10 text-slate-500">No fixtures — Add in Supabase fixtures table. Example: vs SC VILLA 22 OCT</p>
         ) : (
           <div className="grid lg:grid-cols-3 gap-6 mt-8">
-            {/* Fixtures */}
             <div className="lg:col-span-2 space-y-3">
               {filtered.map(f=>(
                 <div key={f.id} className={`rounded-2xl p-5 border flex justify-between items-center ${f.status==='live'?'bg-red-600/10 border-red-500/50': f.highlight? 'bg-[#12244A] border-[#FFC300]/30' : 'bg-[#12244A] border-white/10'}`}>
@@ -60,14 +72,13 @@ export default function FixturesPage() {
               ))}
             </div>
 
-            {/* Table */}
             <div className="space-y-6">
               <div className="bg-white text-black rounded-2xl p-5">
                 <h3 className="font-black text-sm tracking-widest">UPL TABLE • TOP 5</h3>
                 <div className="mt-4 space-y-2">
                   <div className="grid grid-cols-5 text-[10px] text-gray-500 font-bold"><span># TEAM</span><span className="text-center">PL</span><span className="text-center">W</span><span className="text-center">L</span><span className="text-right">PTS</span></div>
                   {TABLE.map(t=>(
-                    <div key={t.pos} className={`grid grid-cols-5 py-2 px-2 rounded text-sm ${t.highlight?'bg-[#0A1931] text-white font-black':'border-b'}`}>
+                    <div key={t.pos} className={`grid grid-cols-5 py-2 px-2 rounded text-sm ${(t as any).highlight?'bg-[#0A1931] text-white font-black':'border-b'}`}>
                       <span>{t.pos}. {t.team}</span><span className="text-center">{t.pl}</span><span className="text-center">{t.w}</span><span className="text-center">{t.l}</span><span className="text-right">{t.pts}</span>
                     </div>
                   ))}

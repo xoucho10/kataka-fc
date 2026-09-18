@@ -4,10 +4,61 @@ export default function MembershipPage() {
   return (
     <div className="min-h-screen bg-[#F8F8F8] text-[#0A1931]">
       <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <h1 className="text-5xl font-black">MEMBERSHIP</h1>
+        {/* HEADER */}
+        <h1 className="text-5xl md:text-7xl font-black tracking-tighter">KATKA FC</h1>
+        <p className="mt-3 text-gray-700 font-bold tracking-widest text-sm">FOR THE PEOPLE • FOR LUFUMBI • FOR GLORY • EST. 2000</p>
+
+        {/* ABOUT CLUB */}
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
+          <div className="bg-[#0A1931] text-white rounded-2xl p-8">
+            <h2 className="text-[#FFC300] font-black text-xl">OUR STORY</h2>
+            <p className="mt-4 text-gray-300 leading-relaxed text-sm">
+              Founded in 2000 in Lufumbi, Uganda, Kataka FC is more than a football club —
+              we are the pride of the people. From dusty grounds to UPL Week 12, 4th Place,
+              12 points. We play for our community, our drum heritage, our future.
+            </p>
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              <div><p className="text-3xl font-black text-[#FFC300]">25</p><p className="text-[10px] text-gray-400">YEARS</p></div>
+              <div><p className="text-3xl font-black text-[#FFC300]">4TH</p><p className="text-[10px] text-gray-400">UPL PLACE</p></div>
+              <div><p className="text-3xl font-black text-[#FFC300]">12</p><p className="text-[10px] text-gray-400">POINTS</p></div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 border border-black/10">
+            <h2 className="font-black text-xl">LUFUMBI GROUND</h2>
+            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              Home of the Eagles. 5,000 capacity. The loudest drum in Uganda.
+              Every Saturday, the whole village walks to the ground.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm font-bold">
+              <li>📍 Lufumbi, Mbale District, Uganda</li>
+              <li>🏟️ Capacity: 5,000</li>
+              <li>🥁 Drum Heritage Since 2000</li>
+              <li>⚽ UPL Premier League</li>
+            </ul>
+            <Link href="/fixtures" className="inline-block mt-6 bg-[#0A1931] text-white px-6 py-2 rounded-full text-sm font-black">SEE FIXTURES →</Link>
+          </div>
+        </div>
+
+        {/* VALUES */}
+        <div className="grid md:grid-cols-3 gap-4 mt-6">
+          {[
+            { t: "FOR THE PEOPLE", d: "Community owned, community driven. 100% for fans." },
+            { t: "FOR LUFUMBI", d: "We represent our village on the national stage." },
+            { t: "FOR GLORY", d: "UPL title dream, CAF dream, never give up." },
+          ].map(v => (
+            <div key={v.t} className="bg-[#FFC300] rounded-2xl p-6">
+              <h3 className="font-black">{v.t}</h3>
+              <p className="text-sm mt-2">{v.d}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* MEMBERSHIP TITLE */}
+        <h2 className="text-5xl font-black mt-16">MEMBERSHIP</h2>
         <p className="mt-3 text-gray-700">Kataka FC - For The People - Lufumbi Ground - 4th Place</p>
 
-        {/* Cards */}
+        {/* CARDS */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
           <div className="bg-[#0A1931] text-white rounded-2xl p-6 border border-white/10">
             <h3 className="font-black text-[#FFC300]">EAGLE FAN</h3>
@@ -38,10 +89,11 @@ export default function MembershipPage() {
           </div>
         </div>
 
-        {/* Lost button recovered here */}
-        <div className="mt-10 flex gap-4">
+        {/* FOOTER BUTTONS */}
+        <div className="mt-10 flex flex-wrap gap-4">
           <Link href="/" className="bg-[#0A1931] text-white px-8 py-3 rounded-full font-black">BACK HOME</Link>
           <Link href="/shop" className="bg-[#FFC300] text-black px-8 py-3 rounded-full font-black">VISIT SHOP →</Link>
+          <Link href="/squad" className="bg-white border border-black/10 text-black px-8 py-3 rounded-full font-black">MEET SQUAD →</Link>
         </div>
       </div>
     </div>

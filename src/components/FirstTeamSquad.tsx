@@ -28,49 +28,22 @@ const PLAYERS: Player[] = [
   { id: 14, no: 11, name: "Ssemakula John", pos: "FW", age: 22, country: "UG" },
 ]
 
-const GROUPS: { key: Pos; label: string }[] = [
-  { key: "GK", label: "GOALKEEPERS" },
-  { key: "DEF", label: "DEFENDERS" },
-  { key: "MID", label: "MIDFIELDERS" },
-  { key: "FW", label: "FORWARDS" },
-]
-
 export default function FirstTeamSquad() {
   return (
-    <div className="space-y-10">
-      {GROUPS.map((group) => {
-        const list = PLAYERS.filter((p) => p.pos === group.key)
-        if (list.length === 0) return null
-
+    <div className="space-y-6">
+      {["GK","DEF","MID","FW"].map((pos) => {
+        const list = PLAYERS.filter((p) => p.pos === pos)
         return (
-          <div key={group.key} className="bg-white rounded-[22px] p-6 md:p-7 border border-black/5 shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-black text-[13px] tracking-[0.22em] text-[#0A1931]">
-                {group.label}
-              </h3>
-              <span className="text-[10px] font-black bg-[#0A1931] text-white px-3 py-1 rounded-full tracking-widest">
-                {list.length}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div key={pos} className="bg-white rounded-2xl p-6 border">
+            <h3 className="font-black text-xs tracking-widest mb-4">{pos}</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {list.map((p) => (
-                <div
-                  key={p.id}
-                  className="flex items-center gap-4 p-4 rounded-2xl border border-black/[0.06] hover:border-[#FFC300]/50 hover:bg-[#FFC300]/5 transition group"
-                >
-                  <div className="w-11 h-11 rounded-full bg-[#0A1931] text-white grid place-items-center font-black text-[13px] shrink-0">
-                    {p.no}
+                <div key={p.id} className="border rounded-xl p-3 flex gap-3 items-center">
+                  <div className="w-10 h-10 rounded-full bg-[#0A1931] text-white grid place-items-center font-black">{p.no}</div>
+                  <div>
+                    <p className="font-black text-sm">{p.name}</p>
+                    <p className="text-xs text-gray-500">{p.pos} • {p.country}</p>
                   </div>
-                  <div className="min-w-0">
-                    <p className="font-black text-[14px] leading-none text-black truncate">
-                      {p.name}
-                    </p>
-                    <p className="text-[11px] font-bold text-gray-500 mt-1.5 tracking-wide">
-                      {p.pos} • {p.country} • {p.age} yrs
-                    </p>
-                  </div>
-                  <div className="ml-auto w-2 h-2 rounded-full bg-[#FFC300] opacity-0 group-hover:opacity-100 transition" />
                 </div>
               ))}
             </div>
