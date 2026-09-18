@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 grid md:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white rounded-full grid place-items-center text-black font-black">K</div>
+            <img src="/logo.png" alt="Kataka FC" className="w-10 h-10 bg-white rounded-full p-1 object-contain" />
             <h3 className="font-black text-xl tracking-tight">KATAKA FC</h3>
           </div>
           <p className="text-sm text-slate-300 mt-3 leading-relaxed">Lufumbi Ground, Mbale. Drum is our heartbeat.</p>
