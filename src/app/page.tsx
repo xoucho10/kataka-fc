@@ -15,13 +15,13 @@ export default function HomePage() {
   }, [])
 
   const upcomingFixtures = [
-    { date: "22 OCT", time: "16:00 EAT", home: "KATKA FC", away: "SC VILLA", venue: "Lufumbi Ground", comp: "UPL" },
-    { date: "26 OCT", time: "16:00 EAT", home: "KCCA FC", away: "KATKA FC", venue: "Lugogo", comp: "UPL" },
-    { date: "30 OCT", time: "15:00 EAT", home: "KATKA FC", away: "BUL FC", venue: "Lufumbi Ground", comp: "UPL" },
+    { date: "22 OCT", time: "16:00 EAT", home: "A FC", away: "SC VILLA", venue: "Lufumbi Ground", comp: "UPL" },
+    { date: "26 OCT", time: "16:00 EAT", home: "KCCA FC", away: "A FC", venue: "Lugogo", comp: "UPL" },
+    { date: "30 OCT", time: "15:00 EAT", home: "A FC", away: "BUL FC", venue: "Lufumbi Ground", comp: "UPL" },
   ]
 
   const news = [
-    { id: 1, title: "Kataka FC Secures Crucial Win Over BUL FC", cat: "MATCH REPORT", date: "12 Oct 2024", img: "https://images.unsplash.com/photo-1579952363873-27f3bfad9c0d?w=400&q=60&auto=format&fit=crop" },
+    { id: 1, title: "a FC Secures Crucial Win Over BUL FC", cat: "MATCH REPORT", date: "12 Oct 2024", img: "https://images.unsplash.com/photo-1579952363873-27f3bfad9c0d?w=400&q=60&auto=format&fit=crop" },
     { id: 2, title: "M. Kibirige Named Player of the Month", cat: "CLUB NEWS", date: "10 Oct 2024", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&q=60&auto=format&fit=crop" },
     { id: 3, title: "New 2024/25 Home Kit Officially Unveiled", cat: "SHOP", date: "08 Oct 2024", img: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=60&auto=format&fit=crop" },
   ]
@@ -50,7 +50,7 @@ export default function HomePage() {
         <div>
           <h1 className="text-[38px] font-black leading-[0.9] text-[#FFC300]">FOR THE PEOPLE. FOR LUFUMBI. FOR GLORY.</h1>
           <p className="mt-4 text-sm text-gray-300">
-            <span className="text-white font-bold">EST. 2000 — Kataka Football Club Lufumbi —</span><br/>
+            <span className="text-white font-bold">EST. 2000 — a Football Club Lufumbi —</span><br/>
             Proudly representing Uganda in the Uganda Premier League<br/>
             <span className="text-xs text-gray-400 mt-2 block">Follow the Eagles as they chase glory this season. Explore the squad, buy tickets, and join the journey with us.</span>
           </p>
@@ -60,7 +60,7 @@ export default function HomePage() {
           </div>
           <div className="mt-6 bg-[#12244A]/60 border border-white/10 rounded-xl p-4">
             <h3 className="text-[#FFC300] text-xs font-black">DRUM HERITAGE</h3>
-            <p className="text-[11px] text-gray-400 mt-1">The traditional drum is the heart of Kataka FC. Played at every home match since 2000, it celebrates Lufumbi&apos;s culture and community spirit.</p>
+            <p className="text-[11px] text-gray-400 mt-1">The traditional drum is the heart of a FC. Played at every home match since 2000, it celebrates Lufumbi&apos;s culture and community spirit.</p>
             <div className="grid grid-cols-3 gap-3 mt-4">
               <div className="bg-[#0A1931] p-3 rounded-lg text-center border border-white/10"><p className="text-[9px] text-yellow-500">LEAGUE POSITION</p><p className="font-black">4TH</p><p className="text-[9px]">UPL • 12 PTS</p></div>
               <div className="bg-[#0A1931] p-3 rounded-lg text-center border border-white/10"><p className="text-[9px] text-yellow-500">SEASON RECORD</p><p className="font-black">W7 • D3 • L2</p><p className="text-[9px]">12 MATCHES PLAYED</p></div>
@@ -116,7 +116,7 @@ export default function HomePage() {
               { club: "SC Villa", p:12, w:8, d:2, pts:26 },
               { club: "Vipers SC", p:12, w:7, d:3, pts:24 },
               { club: "KCCA FC", p:12, w:6, d:4, pts:22 },
-              { club: "KATKA FC", p:12, w:7, d:3, pts:24, active:true },
+              { club: "KATAKA FC", p:12, w:7, d:3, pts:24, active:true },
               { club: "BUL FC", p:12, w:5, d:3, pts:18 },
             ].map((t,i) => (
               <div key={i} className={`flex justify-between px-3 py-2.5 rounded-lg ${t.active? 'bg-[#FFC300] text-black font-black' : 'bg-[#0A1931] border border-white/5'}`}>
