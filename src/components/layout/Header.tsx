@@ -21,7 +21,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <img src="/logo.png" alt="Kataka" className="w-10 h-10 object-contain bg-white p-1 rounded" onError={(e:any)=> e.target.style.display='none'} />
           <div>
-            <p className="font-black text-[#FFC300] leading-none tracking-wide">KATKA FC</p>
+            <p className="font-black text-[#FFC300] leading-none tracking-wide">KATAKA FC</p>
             <p className="text-[10px] tracking-[0.2em] text-gray-400">LUFUMBI • UGANDA</p>
           </div>
         </Link>
@@ -63,7 +63,8 @@ export default function Header() {
       <div className="bg-[#11244e] border-y border-white/10 py-2 overflow-x-auto">
         <div className="flex gap-6 text-[11px] whitespace-nowrap px-6">
           <span className="text-red-400 font-black flex items-center gap-2"><span className="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span> LIVE • UPL WEEK 12</span>
-          <Link href="/fixtures" className="text-white flex items-center gap-1.5"><img src="/logos/kataka.png" className="w-4 h-4 bg-white rounded-full p-0.5" alt="" onError={(e:any)=>e.target.style.display='none'}/> KATKA 2 — 1 BUL • 78'</Link>
+          <Link href="/fixtures" className="text-white flex items-center gap-1.5"><img src="/logos/kataka.png" className="w-4 h-4 bg-white rounded-full p-0.5" alt="" onError={(e:any)=>e.target.style.display='none'}/> KATA
+KA 2 — 1 BUL • 78'</Link>
           <span className="text-gray-400 flex items-center gap-1.5"><img src="/logos/villa.png" className="w-4 h-4 bg-white rounded-full p-0.5" alt="" onError={(e:any)=>e.target.style.display='none'}/> SC VILLA 1 — 1 VIPERS • FT</span>
           <span className="text-gray-400">KCCA 0 — 0 EXPRESS • 45'</span>
         </div>
